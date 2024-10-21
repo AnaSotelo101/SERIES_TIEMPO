@@ -1,0 +1,9 @@
+book_filename: "mi_libro"
+language:
+  label:
+    fig: "Figura "
+    tab: "Tabla "
+rmd_files: [
+  "index.Rmd",
+  "justificacion.Rmd"
+]

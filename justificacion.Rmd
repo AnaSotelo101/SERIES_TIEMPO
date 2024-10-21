@@ -1,0 +1,11 @@
+---
+title: "Justificación"
+author: "Jorge, Ana"
+date: "2024-10-21"
+output: bookdown::gitbook
+---
+
+
+# Justificación
+
+Este es el capítulo de justificación del proyecto.

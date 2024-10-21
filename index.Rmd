@@ -1,0 +1,11 @@
+---
+title: "Mi Proyecto de Bookdown"
+author: "Ana Luisa Sotelo"
+date: "`r Sys.Date()`"
+output: bookdown::gitbook
+site: bookdown::bookdown_site
+documentclass: book
+---
+# Introducción
+
+Bienvenido a mi primer capítulo en Bookdown.
