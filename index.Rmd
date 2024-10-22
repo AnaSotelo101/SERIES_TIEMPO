@@ -1,11 +1,186 @@
 ---
-title: "Mi Proyecto de Bookdown"
-author: "Ana Luisa Sotelo"
+title: "Análisis de series de tiempo"
+author: "Ana Luisa Sotelo & Jorge Ivan Barrera"
 date: "`r Sys.Date()`"
 output: bookdown::gitbook
 site: bookdown::bookdown_site
 documentclass: book
 ---
-# Introducción
+# Unidad 1
 
-Bienvenido a mi primer capítulo en Bookdown.
+El estudiante debe hacer una propuesta de qué tipo de información van a trabajar a lo largo del curso y por qué cree que es importante el pronóstico de ese tipo de información que permita tener valor agregado a esa situación particular que pretendan analizar.
+
+
+Para esto, debe elaborar un documento tipo ‘bookdown’ en GitHub, con máximo una página, que contenga la información y la justificación de su elección en relación con la importancia de analizar esa información. Especificar las fuentes y los permisos de uso de esa información en caso de ser de una empresa específica
+
+## Información del Dataset
+
+El dataset contiene datos anuales sobre los recursos de agua dulce internos renovables per cápita en Colombia, con un rango temporal de 2000 a 2020. Las columnas incluyen:
+
+
+**country:** Nombre del país (Colombia).
+
+**iso2c: ** Código ISO de 2 letras.
+
+**iso3c:** Código ISO de 3 letras.
+
+**year:**  Año de la observación.
+
+**ER.H2O.FWTL.ZS:** Recursos de agua dulce internos renovables per cápita (en porcentaje).
+
+
+```{r include=FALSE}
+# Cargar el paquete
+library(WDI)
+```
+
+
+```{r}
+# Descargar datos de recursos de agua dulce internos renovables per cápita para Colombia (2000-2020)
+water_data_colombia <- WDI(indicator = "ER.H2O.FWTL.ZS", country = "CO", start = 2000, end = 2020)
+
+# Mostrar las primeras 5 líneas del dataset
+head(water_data_colombia, 10)
+
+```
+
+## Justificación de la Elección
+
+**Sostenibilidad de Recursos:**
+
+Analizar los recursos de agua dulce es crucial para comprender la sostenibilidad de este recurso vital en un contexto de cambio climático y crecimiento poblacional.
+
+**Políticas Públicas:**
+
+Los datos sobre recursos hídricos son esenciales para la formulación de políticas de gestión del agua, conservación y desarrollo sostenible. Permiten a los tomadores de decisiones evaluar si los recursos hídricos están siendo utilizados de manera eficiente.
+
+**Salud y Bienestar: **
+
+La disponibilidad de agua dulce está directamente relacionada con la salud pública y la calidad de vida. Un análisis detallado ayuda a identificar posibles riesgos de escasez de agua.
+
+**Desarrollo Económico:**
+
+La gestión adecuada del agua puede impactar en sectores clave como la agricultura, la industria y el turismo, influyendo en el desarrollo económico del país.
+
+## Fuentes de Información
+
+Los datos utilizados en este análisis provienen del Banco Mundial a través del paquete WDI en R. El indicador "ER.H2O.FWTL.ZS" representa los recursos de agua dulce internos renovables per cápita y es un dato de acceso público.
+
+
+**Permisos de Uso**
+Los datos del Banco Mundial son de uso libre y están disponibles bajo la Licencia Abierta del Banco Mundial. Esta licencia permite a los usuarios copiar, modificar y redistribuir los datos, siempre que se atribuya la fuente correctamente.
+
+## Material de Consulta
+Para una comprensión más profunda de la importancia del agua dulce y su gestión, se puede consultar el siguiente material:
+
+"Water Resources Management" por la Organización de las Naciones Unidas.
+"The World Bank Water Resources Management Overview" en el sitio web del Banco Mundial.
+
+### Uso en análisis de series temporales:
+
+**Estructura Temporal:** Contiene datos que se pueden organizar cronológicamente (por año), lo que es fundamental para cualquier análisis de series temporales.
+
+**Variable Cuantitativa:** La columna ER.H2O.FWTL.ZS representa una variable numérica que mide un indicador específico (en este caso, recursos de agua dulce internos renovables per cápita). Esto permite aplicar técnicas estadísticas para analizar patrones y tendencias.
+
+**Rango de Tiempo:** El dataset cubre varios años (en tu caso, de 2000 a 2020), lo que permite observar variaciones y tendencias a lo largo del tiempo, crucial para identificar estacionalidad, ciclos y tendencias.
+
+**Tamaño Adecuado:** Al tener múltiples observaciones, se puede calcular promedios móviles, rezagos y realizar descomposición, proporcionando suficientes datos para obtener resultados significativos.
+
+**Análisis de Patrones:** Al aplicar técnicas como promedio móvil, rezagos y descomposición, puedes identificar patrones, ciclos y tendencias en los datos, lo que es esencial para la interpretación de la variable en cuestión.
+
+**Visualización:** La capacidad de graficar los datos y sus transformaciones (promedio móvil, rezagos) ayuda a visualizar las relaciones y comportamientos de la variable a lo largo del tiempo.
+
+
+# Unidad 2
+Se debe continuar con los datos presentados en dicho entregable y se debe evidenciar, en una de las variables en el tiempo, la aproximación en promedio móvil, en rezagos y en estacionalidad. Todo lo anterior, a través de funciones y gráficas que permitan detectar patrones y ciclos de la variable.
+
+
+```{r}
+
+# Descargar datos de recursos de agua dulce internos renovables per cápita para Colombia (2000-2022)
+water_data_colombia <- WDI(indicator = "ER.H2O.FWTL.ZS", country = "CO", start = 2000, end = 2020)
+
+# Mostrar las primeras 5 líneas del dataset
+head(water_data_colombia, 5)
+water_data_colombia <- na.omit(water_data_colombia)
+
+
+```
+
+Este código carga el paquete WDI, descarga datos sobre recursos de agua dulce renovables per cápita para Colombia desde el año 2000 hasta 2020, muestra las primeras 5 filas del dataframe resultante y elimina cualquier fila que contenga valores nulos.
+
+## Variables en el tiempo: 
+
+```{r}
+# Convertir los datos a una serie temporal
+water_ts <- ts(water_data_colombia$ER.H2O.FWTL.ZS, start = c(2010, 1), frequency = 1 )
+# Mostrar la serie temporal
+plot(water_ts, main = "Recursos de Agua Dulce Internos Renovables per Cápita en Colombia (2000-2020)", ylab = "Recursos de Agua (%)", xlab = "Año", col = "blue")
+summary(water_ts)
+
+
+```
+
+
+La serie temporal muestra una tendencia general descendente. En 2010, el valor era más alto (cerca del 1.2%), pero para 2020 ha bajado considerablemente, llegando a menos del 0.4%.
+
+Esto indica que los recursos de agua dulce disponibles por persona en Colombia han disminuido en este periodo, lo que podría estar relacionado con factores como el cambio climático, la reducción de fuentes de agua, aumento de la población, entre otros.
+
+
+## Calcular el promedio móvil simple
+
+```{r}
+
+library(TTR)  # Instalar solo si no lo tienes
+promedio_movil <- SMA(water_ts, n = 2)
+
+# Graficar la serie original y el promedio móvil
+plot(water_ts, type = "l", col = "blue", main = "Promedio Móvil de Recursos de Agua Dulce en Colombia", ylab = "Recursos de Agua (%)", xlab = "Año")
+lines(promedio_movil, col = "red", lwd = 2)
+legend("topright", legend = c("Original", "Promedio Móvil (3 años)"), col = c("blue", "red"), lty = 1, cex = 0.8)
+
+```
+
+
+El propósito del promedio móvil es suavizar las fluctuaciones en los datos y permitir ver tendencias más claras a lo largo del tiempo.
+A simple vista, ambas líneas siguen trayectorias similares, pero la línea roja (promedio móvil) suaviza las pequeñas variaciones de la serie original.
+Se observa una clara tendencia descendente que se mantiene en ambos casos, aunque el promedio móvil reduce algunas de las fluctuaciones a corto plazo.
+
+## Rezago
+
+```{r}
+# Crear un rezago de 1 año
+water_lag <- lag(water_ts, k = 1)
+
+# Graficar el rezago
+plot(water_lag, type = "l", col = "green", main = "Recursos de Agua con Rezagos (1 año)", ylab = "Recursos de Agua (%)", xlab = "Año")
+
+```
+
+
+Tendencia descendente: Al aplicar el rezago, se mantiene la tendencia a la baja en los recursos de agua per cápita, lo que refuerza la observación original: los recursos han ido disminuyendo a lo largo del tiempo. Este tipo de análisis con rezagos es útil para observar efectos de autocorrelación en series temporales. Si encuentras una fuerte correlación entre los valores actuales y sus rezagos, se podria utilizar esa información para hacer predicciones futuras.
+
+## Estacionalidad
+```{r}
+water_ts <- ts(water_data_colombia$ER.H2O.FWTL.ZS, start = c(2010, 1), frequency = 2 )
+print(water_ts)
+# Descomposición de la serie temporal para observar estacionalidad y tendencia
+decomposed_water <- decompose(water_ts, type = "additive")
+
+# Graficar la descomposición
+plot(decomposed_water)
+
+
+```
+
+
+**Tendencia negativa:** Como se ha observado antes, la tendencia indica que los recursos de agua han disminuido con el tiempo.
+
+**Estacionalidad:** La estacionalidad sugiere que, al menos en los primeros años, hay fluctuaciones regulares, quizás debido a factores climáticos o de gestión del agua. Sin embargo, estas oscilaciones estacionales parecen volverse menos importantes hacia 2019-2020.
+
+**Componente aleatorio:** El componente residual es bastante bajo en la mayoría de los años, lo que significa que la mayoría de los cambios están explicados por la tendencia y la estacionalidad, aunque hay algunos picos que pueden deberse a eventos no modelados.
+
+
+Este análisis de descomposición permite entender cómo diferentes factores (tendencia y estacionalidad) afectan a la serie temporal, y da una idea más clara de qué esperar a futuro o cómo modelar estos datos.
+
+

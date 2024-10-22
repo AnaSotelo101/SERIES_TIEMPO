@@ -4,6 +4,5 @@ language:
     fig: "Figura "
     tab: "Tabla "
 rmd_files: [
-  "index.Rmd",
-  "justificacion.Rmd"
+  "index.Rmd"
 ]

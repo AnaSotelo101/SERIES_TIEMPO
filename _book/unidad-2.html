@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2 Unidad 2 | Análisis de series de tiempo</title>
+  <meta name="description" content="2 Unidad 2 | Análisis de series de tiempo" />
+  <meta name="generator" content="bookdown 0.41 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2 Unidad 2 | Análisis de series de tiempo" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2 Unidad 2 | Análisis de series de tiempo" />
+  
+  
+  
+
+<meta name="author" content="Ana Luisa Sotelo &amp; Jorge Ivan Barrera" />
+
+
+<meta name="date" content="2024-10-21" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Unidad 1</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#información-del-dataset"><i class="fa fa-check"></i><b>1.1</b> Información del Dataset</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#justificación-de-la-elección"><i class="fa fa-check"></i><b>1.2</b> Justificación de la Elección</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#fuentes-de-información"><i class="fa fa-check"></i><b>1.3</b> Fuentes de Información</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#material-de-consulta"><i class="fa fa-check"></i><b>1.4</b> Material de Consulta</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#uso-en-análisis-de-series-temporales"><i class="fa fa-check"></i><b>1.4.1</b> Uso en análisis de series temporales:</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="unidad-2.html"><a href="unidad-2.html"><i class="fa fa-check"></i><b>2</b> Unidad 2</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="unidad-2.html"><a href="unidad-2.html#variables-en-el-tiempo"><i class="fa fa-check"></i><b>2.1</b> Variables en el tiempo:</a></li>
+<li class="chapter" data-level="2.2" data-path="unidad-2.html"><a href="unidad-2.html#calcular-el-promedio-móvil-simple"><i class="fa fa-check"></i><b>2.2</b> Calcular el promedio móvil simple</a></li>
+<li class="chapter" data-level="2.3" data-path="unidad-2.html"><a href="unidad-2.html#rezago"><i class="fa fa-check"></i><b>2.3</b> Rezago</a></li>
+<li class="chapter" data-level="2.4" data-path="unidad-2.html"><a href="unidad-2.html#estacionalidad"><i class="fa fa-check"></i><b>2.4</b> Estacionalidad</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Análisis de series de tiempo</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="unidad-2" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">2</span> Unidad 2<a href="unidad-2.html#unidad-2" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Se debe continuar con los datos presentados en dicho entregable y se debe evidenciar, en una de las variables en el tiempo, la aproximación en promedio móvil, en rezagos y en estacionalidad. Todo lo anterior, a través de funciones y gráficas que permitan detectar patrones y ciclos de la variable.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="unidad-2.html#cb3-1" tabindex="-1"></a><span class="co"># Descargar datos de recursos de agua dulce internos renovables per cápita para Colombia (2000-2022)</span></span>
+<span id="cb3-2"><a href="unidad-2.html#cb3-2" tabindex="-1"></a>water_data_colombia <span class="ot">&lt;-</span> <span class="fu">WDI</span>(<span class="at">indicator =</span> <span class="st">&quot;ER.H2O.FWTL.ZS&quot;</span>, <span class="at">country =</span> <span class="st">&quot;CO&quot;</span>, <span class="at">start =</span> <span class="dv">2000</span>, <span class="at">end =</span> <span class="dv">2020</span>)</span>
+<span id="cb3-3"><a href="unidad-2.html#cb3-3" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="unidad-2.html#cb3-4" tabindex="-1"></a><span class="co"># Mostrar las primeras 5 líneas del dataset</span></span>
+<span id="cb3-5"><a href="unidad-2.html#cb3-5" tabindex="-1"></a><span class="fu">head</span>(water_data_colombia, <span class="dv">5</span>)</span></code></pre></div>
+<pre><code>##    country iso2c iso3c year ER.H2O.FWTL.ZS
+## 1 Colombia    CO   COL 2020       1.357374
+## 2 Colombia    CO   COL 2019       1.316311
+## 3 Colombia    CO   COL 2018       1.265451
+## 4 Colombia    CO   COL 2017       1.285018
+## 5 Colombia    CO   COL 2016       1.304585</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="unidad-2.html#cb5-1" tabindex="-1"></a>water_data_colombia <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(water_data_colombia)</span></code></pre></div>
+<p>Este código carga el paquete WDI, descarga datos sobre recursos de agua dulce renovables per cápita para Colombia desde el año 2000 hasta 2020, muestra las primeras 5 filas del dataframe resultante y elimina cualquier fila que contenga valores nulos.</p>
+<div id="variables-en-el-tiempo" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Variables en el tiempo:<a href="unidad-2.html#variables-en-el-tiempo" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="unidad-2.html#cb6-1" tabindex="-1"></a><span class="co"># Convertir los datos a una serie temporal</span></span>
+<span id="cb6-2"><a href="unidad-2.html#cb6-2" tabindex="-1"></a>water_ts <span class="ot">&lt;-</span> <span class="fu">ts</span>(water_data_colombia<span class="sc">$</span>ER.H2O.FWTL.ZS, <span class="at">start =</span> <span class="fu">c</span>(<span class="dv">2010</span>, <span class="dv">1</span>), <span class="at">frequency =</span> <span class="dv">1</span> )</span>
+<span id="cb6-3"><a href="unidad-2.html#cb6-3" tabindex="-1"></a><span class="co"># Mostrar la serie temporal</span></span>
+<span id="cb6-4"><a href="unidad-2.html#cb6-4" tabindex="-1"></a><span class="fu">plot</span>(water_ts, <span class="at">main =</span> <span class="st">&quot;Recursos de Agua Dulce Internos Renovables per Cápita en Colombia (2000-2020)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Recursos de Agua (%)&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Año&quot;</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<p><img src="mi_libro_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="unidad-2.html#cb7-1" tabindex="-1"></a><span class="fu">summary</span>(water_ts)</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##  0.3611  0.4783  0.7374  0.8147  1.2101  1.3574</code></pre>
+<p>La serie temporal muestra una tendencia general descendente. En 2010, el valor era más alto (cerca del 1.2%), pero para 2020 ha bajado considerablemente, llegando a menos del 0.4%.</p>
+<p>Esto indica que los recursos de agua dulce disponibles por persona en Colombia han disminuido en este periodo, lo que podría estar relacionado con factores como el cambio climático, la reducción de fuentes de agua, aumento de la población, entre otros.</p>
+</div>
+<div id="calcular-el-promedio-móvil-simple" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Calcular el promedio móvil simple<a href="unidad-2.html#calcular-el-promedio-móvil-simple" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="unidad-2.html#cb9-1" tabindex="-1"></a><span class="fu">library</span>(TTR)  <span class="co"># Instalar solo si no lo tienes</span></span></code></pre></div>
+<pre><code>## Warning: package &#39;TTR&#39; was built under R version 4.3.3</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="unidad-2.html#cb11-1" tabindex="-1"></a>promedio_movil <span class="ot">&lt;-</span> <span class="fu">SMA</span>(water_ts, <span class="at">n =</span> <span class="dv">2</span>)</span>
+<span id="cb11-2"><a href="unidad-2.html#cb11-2" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="unidad-2.html#cb11-3" tabindex="-1"></a><span class="co"># Graficar la serie original y el promedio móvil</span></span>
+<span id="cb11-4"><a href="unidad-2.html#cb11-4" tabindex="-1"></a><span class="fu">plot</span>(water_ts, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Promedio Móvil de Recursos de Agua Dulce en Colombia&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Recursos de Agua (%)&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Año&quot;</span>)</span>
+<span id="cb11-5"><a href="unidad-2.html#cb11-5" tabindex="-1"></a><span class="fu">lines</span>(promedio_movil, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb11-6"><a href="unidad-2.html#cb11-6" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;Original&quot;</span>, <span class="st">&quot;Promedio Móvil (3 años)&quot;</span>), <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>), <span class="at">lty =</span> <span class="dv">1</span>, <span class="at">cex =</span> <span class="fl">0.8</span>)</span></code></pre></div>
+<p><img src="mi_libro_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>El propósito del promedio móvil es suavizar las fluctuaciones en los datos y permitir ver tendencias más claras a lo largo del tiempo.
+A simple vista, ambas líneas siguen trayectorias similares, pero la línea roja (promedio móvil) suaviza las pequeñas variaciones de la serie original.
+Se observa una clara tendencia descendente que se mantiene en ambos casos, aunque el promedio móvil reduce algunas de las fluctuaciones a corto plazo.</p>
+</div>
+<div id="rezago" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Rezago<a href="unidad-2.html#rezago" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="unidad-2.html#cb12-1" tabindex="-1"></a><span class="co"># Crear un rezago de 1 año</span></span>
+<span id="cb12-2"><a href="unidad-2.html#cb12-2" tabindex="-1"></a>water_lag <span class="ot">&lt;-</span> <span class="fu">lag</span>(water_ts, <span class="at">k =</span> <span class="dv">1</span>)</span>
+<span id="cb12-3"><a href="unidad-2.html#cb12-3" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="unidad-2.html#cb12-4" tabindex="-1"></a><span class="co"># Graficar el rezago</span></span>
+<span id="cb12-5"><a href="unidad-2.html#cb12-5" tabindex="-1"></a><span class="fu">plot</span>(water_lag, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">col =</span> <span class="st">&quot;green&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Recursos de Agua con Rezagos (1 año)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Recursos de Agua (%)&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Año&quot;</span>)</span></code></pre></div>
+<p><img src="mi_libro_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>Tendencia descendente: Al aplicar el rezago, se mantiene la tendencia a la baja en los recursos de agua per cápita, lo que refuerza la observación original: los recursos han ido disminuyendo a lo largo del tiempo. Este tipo de análisis con rezagos es útil para observar efectos de autocorrelación en series temporales. Si encuentras una fuerte correlación entre los valores actuales y sus rezagos, se podria utilizar esa información para hacer predicciones futuras.</p>
+</div>
+<div id="estacionalidad" class="section level2 hasAnchor" number="2.4">
+<h2><span class="header-section-number">2.4</span> Estacionalidad<a href="unidad-2.html#estacionalidad" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="unidad-2.html#cb13-1" tabindex="-1"></a>water_ts <span class="ot">&lt;-</span> <span class="fu">ts</span>(water_data_colombia<span class="sc">$</span>ER.H2O.FWTL.ZS, <span class="at">start =</span> <span class="fu">c</span>(<span class="dv">2010</span>, <span class="dv">1</span>), <span class="at">frequency =</span> <span class="dv">2</span> )</span>
+<span id="cb13-2"><a href="unidad-2.html#cb13-2" tabindex="-1"></a><span class="fu">print</span>(water_ts)</span></code></pre></div>
+<pre><code>## Time Series:
+## Start = c(2010, 1) 
+## End = c(2020, 1) 
+## Frequency = 2 
+##  [1] 1.3573739 1.3163111 1.2654508 1.2850179 1.3045850 1.2100608 1.1155366
+##  [8] 1.0210125 0.9264883 0.8319641 0.7374399 0.6429158 0.5487179 0.5251457
+## [15] 0.5017133 0.4782809 0.4548485 0.4314161 0.4079837 0.3845688 0.3611189</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="unidad-2.html#cb15-1" tabindex="-1"></a><span class="co"># Descomposición de la serie temporal para observar estacionalidad y tendencia</span></span>
+<span id="cb15-2"><a href="unidad-2.html#cb15-2" tabindex="-1"></a>decomposed_water <span class="ot">&lt;-</span> <span class="fu">decompose</span>(water_ts, <span class="at">type =</span> <span class="st">&quot;additive&quot;</span>)</span>
+<span id="cb15-3"><a href="unidad-2.html#cb15-3" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="unidad-2.html#cb15-4" tabindex="-1"></a><span class="co"># Graficar la descomposición</span></span>
+<span id="cb15-5"><a href="unidad-2.html#cb15-5" tabindex="-1"></a><span class="fu">plot</span>(decomposed_water)</span></code></pre></div>
+<p><img src="mi_libro_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><strong>Tendencia negativa:</strong> Como se ha observado antes, la tendencia indica que los recursos de agua han disminuido con el tiempo.</p>
+<p><strong>Estacionalidad:</strong> La estacionalidad sugiere que, al menos en los primeros años, hay fluctuaciones regulares, quizás debido a factores climáticos o de gestión del agua. Sin embargo, estas oscilaciones estacionales parecen volverse menos importantes hacia 2019-2020.</p>
+<p><strong>Componente aleatorio:</strong> El componente residual es bastante bajo en la mayoría de los años, lo que significa que la mayoría de los cambios están explicados por la tendencia y la estacionalidad, aunque hay algunos picos que pueden deberse a eventos no modelados.</p>
+<p>Este análisis de descomposición permite entender cómo diferentes factores (tendencia y estacionalidad) afectan a la serie temporal, y da una idea más clara de qué esperar a futuro o cómo modelar estos datos.</p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
