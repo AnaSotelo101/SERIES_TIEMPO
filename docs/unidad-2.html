@@ -192,7 +192,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb6-2"><a href="unidad-2.html#cb6-2" tabindex="-1"></a>water_ts <span class="ot">&lt;-</span> <span class="fu">ts</span>(water_data_colombia<span class="sc">$</span>ER.H2O.FWTL.ZS, <span class="at">start =</span> <span class="fu">c</span>(<span class="dv">2010</span>, <span class="dv">1</span>), <span class="at">frequency =</span> <span class="dv">1</span> )</span>
 <span id="cb6-3"><a href="unidad-2.html#cb6-3" tabindex="-1"></a><span class="co"># Mostrar la serie temporal</span></span>
 <span id="cb6-4"><a href="unidad-2.html#cb6-4" tabindex="-1"></a><span class="fu">plot</span>(water_ts, <span class="at">main =</span> <span class="st">&quot;Recursos de Agua Dulce Internos Renovables per Cápita en Colombia (2000-2020)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Recursos de Agua (%)&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Año&quot;</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
-<p><img src="_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="SERIES_TIEMPO_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="unidad-2.html#cb7-1" tabindex="-1"></a><span class="fu">summary</span>(water_ts)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##  0.3611  0.4783  0.7374  0.8147  1.2101  1.3574</code></pre>
@@ -201,45 +201,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="calcular-el-promedio-móvil-simple" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> Calcular el promedio móvil simple<a href="unidad-2.html#calcular-el-promedio-móvil-simple" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="unidad-2.html#cb9-1" tabindex="-1"></a><span class="fu">library</span>(TTR)  <span class="co"># Instalar solo si no lo tienes</span></span>
-<span id="cb9-2"><a href="unidad-2.html#cb9-2" tabindex="-1"></a>promedio_movil <span class="ot">&lt;-</span> <span class="fu">SMA</span>(water_ts, <span class="at">n =</span> <span class="dv">2</span>)</span>
-<span id="cb9-3"><a href="unidad-2.html#cb9-3" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="unidad-2.html#cb9-4" tabindex="-1"></a><span class="co"># Graficar la serie original y el promedio móvil</span></span>
-<span id="cb9-5"><a href="unidad-2.html#cb9-5" tabindex="-1"></a><span class="fu">plot</span>(water_ts, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Promedio Móvil de Recursos de Agua Dulce en Colombia&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Recursos de Agua (%)&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Año&quot;</span>)</span>
-<span id="cb9-6"><a href="unidad-2.html#cb9-6" tabindex="-1"></a><span class="fu">lines</span>(promedio_movil, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
-<span id="cb9-7"><a href="unidad-2.html#cb9-7" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;Original&quot;</span>, <span class="st">&quot;Promedio Móvil (3 años)&quot;</span>), <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>), <span class="at">lty =</span> <span class="dv">1</span>, <span class="at">cex =</span> <span class="fl">0.8</span>)</span></code></pre></div>
-<p><img src="_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="unidad-2.html#cb9-1" tabindex="-1"></a><span class="fu">library</span>(TTR)  <span class="co"># Instalar solo si no lo tienes</span></span></code></pre></div>
+<pre><code>## Warning: package &#39;TTR&#39; was built under R version 4.3.3</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="unidad-2.html#cb11-1" tabindex="-1"></a>promedio_movil <span class="ot">&lt;-</span> <span class="fu">SMA</span>(water_ts, <span class="at">n =</span> <span class="dv">2</span>)</span>
+<span id="cb11-2"><a href="unidad-2.html#cb11-2" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="unidad-2.html#cb11-3" tabindex="-1"></a><span class="co"># Graficar la serie original y el promedio móvil</span></span>
+<span id="cb11-4"><a href="unidad-2.html#cb11-4" tabindex="-1"></a><span class="fu">plot</span>(water_ts, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">col =</span> <span class="st">&quot;blue&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Promedio Móvil de Recursos de Agua Dulce en Colombia&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Recursos de Agua (%)&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Año&quot;</span>)</span>
+<span id="cb11-5"><a href="unidad-2.html#cb11-5" tabindex="-1"></a><span class="fu">lines</span>(promedio_movil, <span class="at">col =</span> <span class="st">&quot;red&quot;</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb11-6"><a href="unidad-2.html#cb11-6" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topright&quot;</span>, <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;Original&quot;</span>, <span class="st">&quot;Promedio Móvil (3 años)&quot;</span>), <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;blue&quot;</span>, <span class="st">&quot;red&quot;</span>), <span class="at">lty =</span> <span class="dv">1</span>, <span class="at">cex =</span> <span class="fl">0.8</span>)</span></code></pre></div>
+<p><img src="SERIES_TIEMPO_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>El propósito del promedio móvil es suavizar las fluctuaciones en los datos y permitir ver tendencias más claras a lo largo del tiempo.
 A simple vista, ambas líneas siguen trayectorias similares, pero la línea roja (promedio móvil) suaviza las pequeñas variaciones de la serie original.
 Se observa una clara tendencia descendente que se mantiene en ambos casos, aunque el promedio móvil reduce algunas de las fluctuaciones a corto plazo.</p>
 </div>
 <div id="rezago" class="section level2 hasAnchor" number="2.3">
 <h2><span class="header-section-number">2.3</span> Rezago<a href="unidad-2.html#rezago" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="unidad-2.html#cb10-1" tabindex="-1"></a><span class="co"># Crear un rezago de 1 año</span></span>
-<span id="cb10-2"><a href="unidad-2.html#cb10-2" tabindex="-1"></a>water_lag <span class="ot">&lt;-</span> <span class="fu">lag</span>(water_ts, <span class="at">k =</span> <span class="dv">1</span>)</span>
-<span id="cb10-3"><a href="unidad-2.html#cb10-3" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="unidad-2.html#cb10-4" tabindex="-1"></a><span class="co"># Graficar el rezago</span></span>
-<span id="cb10-5"><a href="unidad-2.html#cb10-5" tabindex="-1"></a><span class="fu">plot</span>(water_lag, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">col =</span> <span class="st">&quot;green&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Recursos de Agua con Rezagos (1 año)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Recursos de Agua (%)&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Año&quot;</span>)</span></code></pre></div>
-<p><img src="_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="unidad-2.html#cb12-1" tabindex="-1"></a><span class="co"># Crear un rezago de 1 año</span></span>
+<span id="cb12-2"><a href="unidad-2.html#cb12-2" tabindex="-1"></a>water_lag <span class="ot">&lt;-</span> <span class="fu">lag</span>(water_ts, <span class="at">k =</span> <span class="dv">1</span>)</span>
+<span id="cb12-3"><a href="unidad-2.html#cb12-3" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="unidad-2.html#cb12-4" tabindex="-1"></a><span class="co"># Graficar el rezago</span></span>
+<span id="cb12-5"><a href="unidad-2.html#cb12-5" tabindex="-1"></a><span class="fu">plot</span>(water_lag, <span class="at">type =</span> <span class="st">&quot;l&quot;</span>, <span class="at">col =</span> <span class="st">&quot;green&quot;</span>, <span class="at">main =</span> <span class="st">&quot;Recursos de Agua con Rezagos (1 año)&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Recursos de Agua (%)&quot;</span>, <span class="at">xlab =</span> <span class="st">&quot;Año&quot;</span>)</span></code></pre></div>
+<p><img src="SERIES_TIEMPO_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>Tendencia descendente: Al aplicar el rezago, se mantiene la tendencia a la baja en los recursos de agua per cápita, lo que refuerza la observación original: los recursos han ido disminuyendo a lo largo del tiempo. Este tipo de análisis con rezagos es útil para observar efectos de autocorrelación en series temporales. Si encuentras una fuerte correlación entre los valores actuales y sus rezagos, se podria utilizar esa información para hacer predicciones futuras.</p>
 </div>
 <div id="estacionalidad" class="section level2 hasAnchor" number="2.4">
 <h2><span class="header-section-number">2.4</span> Estacionalidad<a href="unidad-2.html#estacionalidad" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="unidad-2.html#cb11-1" tabindex="-1"></a>water_ts <span class="ot">&lt;-</span> <span class="fu">ts</span>(water_data_colombia<span class="sc">$</span>ER.H2O.FWTL.ZS, <span class="at">start =</span> <span class="fu">c</span>(<span class="dv">2010</span>, <span class="dv">1</span>), <span class="at">frequency =</span> <span class="dv">2</span> )</span>
-<span id="cb11-2"><a href="unidad-2.html#cb11-2" tabindex="-1"></a><span class="fu">print</span>(water_ts)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="unidad-2.html#cb13-1" tabindex="-1"></a>water_ts <span class="ot">&lt;-</span> <span class="fu">ts</span>(water_data_colombia<span class="sc">$</span>ER.H2O.FWTL.ZS, <span class="at">start =</span> <span class="fu">c</span>(<span class="dv">2010</span>, <span class="dv">1</span>), <span class="at">frequency =</span> <span class="dv">2</span> )</span>
+<span id="cb13-2"><a href="unidad-2.html#cb13-2" tabindex="-1"></a><span class="fu">print</span>(water_ts)</span></code></pre></div>
 <pre><code>## Time Series:
 ## Start = c(2010, 1) 
 ## End = c(2020, 1) 
 ## Frequency = 2 
-##  [1] 1.3573739 1.3163111 1.2654508 1.2850179 1.3045850 1.2100608 1.1155366 1.0210125 0.9264883 0.8319641
-## [11] 0.7374399 0.6429158 0.5487179 0.5251457 0.5017133 0.4782809 0.4548485 0.4314161 0.4079837 0.3845688
-## [21] 0.3611189</code></pre>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="unidad-2.html#cb13-1" tabindex="-1"></a><span class="co"># Descomposición de la serie temporal para observar estacionalidad y tendencia</span></span>
-<span id="cb13-2"><a href="unidad-2.html#cb13-2" tabindex="-1"></a>decomposed_water <span class="ot">&lt;-</span> <span class="fu">decompose</span>(water_ts, <span class="at">type =</span> <span class="st">&quot;additive&quot;</span>)</span>
-<span id="cb13-3"><a href="unidad-2.html#cb13-3" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="unidad-2.html#cb13-4" tabindex="-1"></a><span class="co"># Graficar la descomposición</span></span>
-<span id="cb13-5"><a href="unidad-2.html#cb13-5" tabindex="-1"></a><span class="fu">plot</span>(decomposed_water)</span></code></pre></div>
-<p><img src="_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+##  [1] 1.3573739 1.3163111 1.2654508 1.2850179 1.3045850 1.2100608 1.1155366
+##  [8] 1.0210125 0.9264883 0.8319641 0.7374399 0.6429158 0.5487179 0.5251457
+## [15] 0.5017133 0.4782809 0.4548485 0.4314161 0.4079837 0.3845688 0.3611189</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="unidad-2.html#cb15-1" tabindex="-1"></a><span class="co"># Descomposición de la serie temporal para observar estacionalidad y tendencia</span></span>
+<span id="cb15-2"><a href="unidad-2.html#cb15-2" tabindex="-1"></a>decomposed_water <span class="ot">&lt;-</span> <span class="fu">decompose</span>(water_ts, <span class="at">type =</span> <span class="st">&quot;additive&quot;</span>)</span>
+<span id="cb15-3"><a href="unidad-2.html#cb15-3" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="unidad-2.html#cb15-4" tabindex="-1"></a><span class="co"># Graficar la descomposición</span></span>
+<span id="cb15-5"><a href="unidad-2.html#cb15-5" tabindex="-1"></a><span class="fu">plot</span>(decomposed_water)</span></code></pre></div>
+<p><img src="SERIES_TIEMPO_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p><strong>Tendencia negativa:</strong> Como se ha observado antes, la tendencia indica que los recursos de agua han disminuido con el tiempo.</p>
 <p><strong>Estacionalidad:</strong> La estacionalidad sugiere que, al menos en los primeros años, hay fluctuaciones regulares, quizás debido a factores climáticos o de gestión del agua. Sin embargo, estas oscilaciones estacionales parecen volverse menos importantes hacia 2019-2020.</p>
 <p><strong>Componente aleatorio:</strong> El componente residual es bastante bajo en la mayoría de los años, lo que significa que la mayoría de los cambios están explicados por la tendencia y la estacionalidad, aunque hay algunos picos que pueden deberse a eventos no modelados.</p>

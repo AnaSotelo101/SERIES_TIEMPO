@@ -1,0 +1,11 @@
+unidad-1
+información-del-dataset
+justificación-de-la-elección
+fuentes-de-información
+material-de-consulta
+uso-en-análisis-de-series-temporales
+unidad-2
+variables-en-el-tiempo
+calcular-el-promedio-móvil-simple
+rezago
+estacionalidad

@@ -1,4 +1,6 @@
-book_filename: "mi_libro"
+book_filename: "SERIES_TIEMPO" 
+output_dir: "docs" # Carpeta donde se guardarán los archivos compilados, para que GitHub Pages los lea
+clean: true # Limpia los archivos antiguos antes de compilar el libro
 language:
   label:
     fig: "Figura "
