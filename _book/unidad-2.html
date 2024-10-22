@@ -56,7 +56,7 @@
 
 <style type="text/css">
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -66,7 +66,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -232,9 +232,9 @@ Se observa una clara tendencia descendente que se mantiene en ambos casos, aunqu
 ## Start = c(2010, 1) 
 ## End = c(2020, 1) 
 ## Frequency = 2 
-##  [1] 1.3573739 1.3163111 1.2654508 1.2850179 1.3045850 1.2100608 1.1155366
-##  [8] 1.0210125 0.9264883 0.8319641 0.7374399 0.6429158 0.5487179 0.5251457
-## [15] 0.5017133 0.4782809 0.4548485 0.4314161 0.4079837 0.3845688 0.3611189</code></pre>
+##  [1] 1.3573739 1.3163111 1.2654508 1.2850179 1.3045850 1.2100608 1.1155366 1.0210125 0.9264883 0.8319641
+## [11] 0.7374399 0.6429158 0.5487179 0.5251457 0.5017133 0.4782809 0.4548485 0.4314161 0.4079837 0.3845688
+## [21] 0.3611189</code></pre>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="unidad-2.html#cb15-1" tabindex="-1"></a><span class="co"># Descomposición de la serie temporal para observar estacionalidad y tendencia</span></span>
 <span id="cb15-2"><a href="unidad-2.html#cb15-2" tabindex="-1"></a>decomposed_water <span class="ot">&lt;-</span> <span class="fu">decompose</span>(water_ts, <span class="at">type =</span> <span class="st">&quot;additive&quot;</span>)</span>
 <span id="cb15-3"><a href="unidad-2.html#cb15-3" tabindex="-1"></a></span>
